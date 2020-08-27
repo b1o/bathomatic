@@ -1,0 +1,72 @@
+<nz-card
+  routerLink="{{!room.isLocked ? '/rooms/' + room.key : '/'}}"
+  style="width: 100%; box-shadow: 0px 0px 10px rgba(0, 21, 41, 0.35)"
+  [nzTitle]="cardTitle"
+  [nzExtra]="extraTemplate"
+  [nzActions]="[footer]"
+>
+  <div class="locked-overlay" *ngIf="room.isLocked">
+    <i nz-icon nzType="lock"></i>
+    <strong>There is someone already in the room</strong>
+  </div>
+
+  <div style="width: 100%; text-align: center">
+    <strong>{{ room.occupied ? room.tenantName : "FREE ROOM" }}</strong>
+  </div>
+
+  <nz-space style="margin-top: 48px; display: flex; justify-content: center">
+    <nz-space-item *ngIf="room.bath">
+      <nz-avatar [nzSize]="64" [nzIcon]="'bath'"></nz-avatar>
+    </nz-space-item>
+
+    <nz-space-item *ngIf="room.shower">
+      <nz-avatar [nzSize]="64" [nzIcon]="'shower'"></nz-avatar>
+    </nz-space-item>
+    <nz-space-item *ngIf="room.steam">
+      <nz-avatar [nzSize]="64" [nzIcon]="'steam'"></nz-avatar>
+    </nz-space-item>
+  </nz-space>
+</nz-card>
+<ng-template #extraTemplate>
+  <nz-tag style="margin-right: 0" [nzColor]="room.occupied ? 'red' : 'green'">{{
+    room.occupied ? "occupied" : "available"
+  }}</nz-tag>
+</ng-template>
+
+<ng-template #cardTitle>
+  <button
+    style="margin-right: 4px"
+    *ngIf="canEdit"
+    nzSize="small"
+    nz-button
+    nzShape="circle"
+    (click)="onEditClick($event)"
+    nzType="primary"
+  >
+    <i nz-icon nzType="edit"></i>
+  </button>
+  <span>#{{ room.roomNumber }} f {{ room.roomFloor }}</span>
+</ng-template>
+
+<ng-template #shower>
+  <nz-badge [nzCount]="3">
+    <i nz-icon nzType="bath" style="font-size: 48px"></i>
+  </nz-badge>
+</ng-template>
+
+<ng-template #steam>
+  <nz-badge [nzCount]="1">
+    <i nz-icon nzType="shower" style="font-size: 48px"></i>
+  </nz-badge>
+</ng-template>
+
+<ng-template #bath>
+  <nz-badge [nzCount]="2">
+    <i nz-icon nzType="steam" style="font-size: 48px"></i>
+  </nz-badge>
+</ng-template>
+
+<ng-template #footer>
+  <i nz-icon nzType="calendar"></i>
+  {{ room.occupied ? room.occupiedFor : "0 days" }}
+</ng-template>

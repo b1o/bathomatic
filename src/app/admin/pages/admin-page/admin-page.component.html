@@ -1,0 +1,80 @@
+<div>
+  <div nz-row nzGutter="32" nzJustify="center">
+    <div nz-col nzSpan="10">
+      <nz-card nzTitle="Devices">
+        <div>
+          <nz-list nzBordered>
+            <nz-list-item *ngFor="let device of devices | async">
+              {{ device.deviceId }}
+              <ul nz-list-item-actions>
+                <nz-list-item-action>
+                  <button
+                    nzShape="circle"
+                    nzSize="small"
+                    nz-button
+                    nzType="danger"
+                    (click)="remove(device.key)"
+                  >
+                    <i nz-icon nzType="delete"></i>
+                  </button>
+                </nz-list-item-action>
+                <nz-list-item-action>
+                  <button
+                    nzShape="circle"
+                    nzSize="small"
+                    nz-button
+                    nzType="primary"
+                    (click)="update(device)"
+                  >
+                    <i nz-icon nzType="edit"></i>
+                  </button>
+                </nz-list-item-action>
+              </ul>
+            </nz-list-item>
+          </nz-list>
+        </div>
+      </nz-card>
+    </div>
+    <div nz-col nzFillRest>
+      <nz-card nzTitle="Add Device">
+        <form nz-form [formGroup]="form" (ngSubmit)="submitForm()">
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Filed is required">
+              <nz-input-group>
+                <input
+                  formControlName="deviceId"
+                  nz-input
+                  placeholder="Device ID"
+                />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Filed is required">
+              <nz-input-group>
+                <input
+                  formControlName="videoUrl"
+                  nz-input
+                  type="text"
+                  placeholder="Video URL"
+                />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control>
+              <button
+                style="width: 100%"
+                nz-button
+                nzType="primary"
+                [disabled]="!form.valid"
+              >
+                Add
+              </button>
+            </nz-form-control>
+          </nz-form-item>
+        </form>
+      </nz-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div nz-submenu nzTitle="Rooms" nzIcon="build">
+  <div style="padding: 24px;" class="rooms-filter">
+    <div>
+      <nz-input-group
+        style="margin-bottom: 16px;"
+        [nzSuffix]="suffixIconSearch"
+      >
+        <input type="text" nz-input placeholder="input search text" />
+      </nz-input-group>
+    </div>
+    <div
+      class="room-buttons"
+    >
+      <button nzGhost nz-button>301</button>
+      <button nzGhost nz-button>302</button>
+      <button nzGhost nz-button>303</button>
+      <button nzGhost nz-button>304</button>
+      <button nzGhost nz-button>306</button>
+      <button nzGhost nz-button>307</button>
+      <button nzGhost nz-button>308</button>
+      <button nzGhost nz-button>309</button>
+      <button nzGhost nz-button>310</button>
+      <button nzGhost nz-button>311</button>
+    </div>
+  </div>
+</div>
+<ng-template #suffixIconSearch>
+  <i nz-icon nzType="search"></i>
+</ng-template>

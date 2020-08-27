@@ -1,0 +1,33 @@
+<form nz-form [formGroup]="form" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Filed is required">
+      <nz-input-group>
+        <input formControlName="deviceId" nz-input placeholder="Device ID" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Filed is required">
+      <nz-input-group>
+        <input
+          formControlName="videoUrl"
+          nz-input
+          type="text"
+          placeholder="Video URL"
+        />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <!-- <nz-form-item *nzModalFooter>
+    <nz-form-control>
+      <button
+        nz-button
+        nzType="primary"
+        (click)="submitForm()"
+        [disabled]="!form.valid"
+      >
+        Edit
+      </button>
+    </nz-form-control>
+  </nz-form-item> -->
+</form>

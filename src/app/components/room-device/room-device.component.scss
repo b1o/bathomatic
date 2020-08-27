@@ -1,0 +1,25 @@
+.device {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #707070;
+  padding: 4px;
+  margin-bottom: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+
+  img {
+    width: 100%;
+    max-width: 90%;
+    height: auto;
+  }
+  .mat-badge-content {
+    right: -4px !important;
+    top: -4px !important;
+  }
+
+
+}

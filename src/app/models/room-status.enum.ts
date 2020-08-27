@@ -1,0 +1,5 @@
+export enum RoomStatus {
+  DO_NOT_DISTURB = 'DO_NOT_DISTURB',
+  ATTENTION = 'ATTENTION',
+  MAINTENANCE = 'MAINTENANCE',
+}

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "bathomatic-a3cbc": {
+      "hosting": {
+        "bathomatic": [
+          "bathomatic-a3cbc"
+        ]
+      }
+    }
+  }
+}

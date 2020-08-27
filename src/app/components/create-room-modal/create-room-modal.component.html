@@ -1,0 +1,106 @@
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <div class="tenant">
+    <label nz-checkbox formControlName="occupied">Is Occupied</label>
+
+    <div *ngIf="isOccupied" class="tenantDetails">
+      <nz-form-control>
+        <input
+          type="text"
+          nz-input
+          placeholder="Tenant Name"
+          formControlName="tenantName"
+        />
+      </nz-form-control>
+      <nz-form-control>
+        <input
+          type="text"
+          nz-input
+          placeholder="Occupation Period"
+          formControlName="occupiedFor"
+        />
+      </nz-form-control>
+    </div>
+  </div>
+
+  <div class="room-details">
+    <nz-input-group nzCompact>
+      <input
+        formControlName="roomNumber"
+        type="number"
+        style="width: 50%"
+        placeholder="Room Number"
+        nz-input
+      />
+      <input
+        formControlName="roomFloor"
+        type="number"
+        style="width: 50%"
+        placeholder="Floor"
+        nz-input
+      />
+    </nz-input-group>
+  </div>
+
+  <div class="devices">
+    Devices
+    <nz-switch
+      nzSize="default"
+      formControlName="bath"
+      [nzCheckedChildren]="bath"
+      [nzUnCheckedChildren]="bath"
+    ></nz-switch>
+    <nz-switch
+      nzSize="large"
+      formControlName="shower"
+      [nzCheckedChildren]="shower"
+      [nzUnCheckedChildren]="shower"
+    ></nz-switch>
+    <nz-switch
+      formControlName="steam"
+      nzSize="large"
+      [nzCheckedChildren]="steam"
+      [nzUnCheckedChildren]="steam"
+    ></nz-switch>
+  </div>
+
+  <div class="room-status">
+    <nz-select [nzPlaceHolder]="'Room Status'" formControlName="roomStatus">
+      <nz-option nzValue="DO_NOT_DISTURB" nzLabel="Do not disturb"></nz-option>
+      <nz-option nzValue="ATTENTION" nzLabel="Attention"></nz-option>
+      <nz-option nzValue="MAINTENANCE" nzLabel="Maintenance"></nz-option>
+      <nz-option nzValue="no_status" nzLabel="No Status"></nz-option>
+    </nz-select>
+  </div>
+</form>
+
+<div *nzModalFooter>
+  <button
+    nzPopconfirmTitle="Are you sure you want to delete this room?"
+    nzPopconfirmPlacement="bottom"
+    (nzOnConfirm)="confirmDelete()"
+    nz-popconfirm
+    [nzLoading]="deleteLoading"
+    *ngIf="isEdit"
+    nz-button
+    nzType="danger"
+    nzGhost
+  >
+    Delete
+  </button>
+  <button nz-button (click)="cancel()" nzType="primary" [nzGhost]="true">
+    Cancel
+  </button>
+  <button [nzLoading]="loading" nz-button (click)="add()" nzType="primary">
+    {{ isEdit ? "Save" : "Add" }}
+  </button>
+</div>
+
+<ng-template #bath>
+  <i nz-icon nzType="bath"></i>
+</ng-template>
+<ng-template #shower>
+  <i nz-icon nzType="shower"></i>
+</ng-template>
+<ng-template #steam>
+  <i nz-icon nzType="steam"></i>
+</ng-template>
