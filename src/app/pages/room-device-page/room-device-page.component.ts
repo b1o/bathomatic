@@ -25,7 +25,7 @@ export class RoomDevicePageComponent implements OnInit {
   }
 
   private toDeviceUrl(deviceId) {
-    return `http://remote.uniqueautomation.co.uk/cgi-bin/bathomatic.cgi/${deviceId}/3018efc8-8be6-4bd6-ba47-e098bd3e3f89`;
+    return `https://remote.uniqueautomation.co.uk/cgi-bin/bathomatic.cgi/${deviceId}/3018efc8-8be6-4bd6-ba47-e098bd3e3f89`;
   }
 
   ngOnInit(): void {}
