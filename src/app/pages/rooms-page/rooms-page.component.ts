@@ -51,5 +51,8 @@ export class RoomsPageComponent implements OnInit {
     });
   }
 
+  roomTrackBy(index, el) {
+    return el.key;
+  }
   ngOnInit(): void {}
 }

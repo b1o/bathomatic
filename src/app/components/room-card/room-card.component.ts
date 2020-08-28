@@ -18,7 +18,8 @@ export class RoomCardComponent implements OnInit {
 
   onEditClick(event: MouseEvent) {
     event.preventDefault();
-    event.stopImmediatePropagation()
+    event.stopImmediatePropagation();
     this.edit.emit(this.room);
   }
+
 }

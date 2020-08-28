@@ -19,6 +19,6 @@
     [canEdit]="canEdit"
     (edit)="onRoomEdit($event)"
     [room]="room"
-    *ngFor="let room of rooms | async"
+    *ngFor="let room of rooms | async; trackBy: roomTrackBy"
   ></bm-room-card>
 </div>

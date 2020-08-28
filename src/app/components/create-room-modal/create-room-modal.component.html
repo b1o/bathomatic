@@ -63,6 +63,45 @@
     ></nz-switch>
   </div>
 
+  <div class="device-forms">
+    <div *ngIf="hasBath" class="bath">
+      <div class="forms">
+        <ng-container
+          *ngTemplateOutlet="
+            deviceForms;
+            context: { deviceLabel: 'Bath Devices', deviceType: 'bathDevices' }
+          "
+        ></ng-container>
+      </div>
+    </div>
+    <div *ngIf="hasShower" class="shower">
+      <div class="forms">
+        <ng-container
+          *ngTemplateOutlet="
+            deviceForms;
+            context: {
+              deviceLabel: 'Shower Devices',
+              deviceType: 'showerDevices'
+            }
+          "
+        ></ng-container>
+      </div>
+    </div>
+    <div *ngIf="hasSteam" class="steam">
+      <div class="forms">
+        <ng-container
+          *ngTemplateOutlet="
+            deviceForms;
+            context: {
+              deviceLabel: 'Steam Devices',
+              deviceType: 'steamDevices'
+            }
+          "
+        ></ng-container>
+      </div>
+    </div>
+  </div>
+
   <div class="room-status">
     <nz-select [nzPlaceHolder]="'Room Status'" formControlName="roomStatus">
       <nz-option nzValue="DO_NOT_DISTURB" nzLabel="Do not disturb"></nz-option>
@@ -103,4 +142,50 @@
 </ng-template>
 <ng-template #steam>
   <i nz-icon nzType="steam"></i>
+</ng-template>
+
+<ng-template #deviceForms let-type="deviceType" let-label="deviceLabel">
+  <nz-divider nzOrientation="right" [nzText]="formHeader"></nz-divider>
+  <ng-template #formHeader>
+    {{ label }}
+    <button nzShape="circle" nzSize="small" (click)="addDevice(type)" nz-button>
+      <i nz-icon nzType="plus"></i></button>
+  </ng-template>
+  <div
+    style="margin-bottom: 8px"
+    *ngFor="let device of getControlsForDevice(type); let i = index"
+    [formGroup]="device"
+  >
+    <nz-input-group nzCompact>
+      <input
+        style="width: 25%"
+        nz-input
+        type="text"
+        formControlName="deviceName"
+        placeholder="Device Name"
+      />
+      <input
+        style="width: 35%"
+        nz-input
+        type="text"
+        formControlName="deviceID"
+        placeholder="Device ID"
+      />
+      <input
+        style="width: 30%"
+        nz-input
+        type="text"
+        formControlName="videoUrl"
+        placeholder="Video URL"
+      />
+      <button
+        style="width: 10%"
+        nz-button
+        nzType="danger"
+        (click)="removeDeviceControl(type, i)"
+      >
+        <i nz-icon nzType="delete"></i>
+      </button>
+    </nz-input-group>
+  </div>
 </ng-template>

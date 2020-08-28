@@ -1,5 +1,5 @@
 <nz-card
-  routerLink="{{!room.isLocked ? '/rooms/' + room.key : '/'}}"
+  routerLink="{{ !room.isLocked ? '/rooms/' + room.key : '/' }}"
   style="width: 100%; box-shadow: 0px 0px 10px rgba(0, 21, 41, 0.35)"
   [nzTitle]="cardTitle"
   [nzExtra]="extraTemplate"
@@ -16,14 +16,20 @@
 
   <nz-space style="margin-top: 48px; display: flex; justify-content: center">
     <nz-space-item *ngIf="room.bath">
-      <nz-avatar [nzSize]="64" [nzIcon]="'bath'"></nz-avatar>
+      <nz-badge nzCount="{{room.bathDevices?.length}}">
+        <nz-avatar [nzSize]="64" [nzIcon]="'bath'"></nz-avatar>
+      </nz-badge>
     </nz-space-item>
 
     <nz-space-item *ngIf="room.shower">
-      <nz-avatar [nzSize]="64" [nzIcon]="'shower'"></nz-avatar>
+      <nz-badge nzCount="{{room.showerDevices?.length}}">
+        <nz-avatar [nzSize]="64" [nzIcon]="'shower'"></nz-avatar>
+      </nz-badge>
     </nz-space-item>
     <nz-space-item *ngIf="room.steam">
-      <nz-avatar [nzSize]="64" [nzIcon]="'steam'"></nz-avatar>
+      <nz-badge nzCount="{{room.steamDevices?.length}}">
+        <nz-avatar [nzSize]="64" [nzIcon]="'steam'"></nz-avatar>
+      </nz-badge>
     </nz-space-item>
   </nz-space>
 </nz-card>
