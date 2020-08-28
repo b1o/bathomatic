@@ -4,6 +4,9 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Room } from 'src/app/models/room';
 import { generateChartData, generateTableData } from '../../utils/generateChartData';
 import { multi } from './data';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { NzModalService } from 'ng-zorro-antd/modal';
+import { CreateRoomModalComponent } from 'src/app/components/create-room-modal/create-room-modal.component';
 
 @Component({
   selector: 'bm-demo-page',
@@ -39,7 +42,9 @@ export class DemoPageComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private fbDatabase: AngularFireDatabase
+    private fbDatabase: AngularFireDatabase,
+    public fbAuth: AngularFireAuth,
+    private modal: NzModalService
   ) {
 
     this.roomsRef = this.fbDatabase.list('room');
@@ -52,7 +57,7 @@ export class DemoPageComponent implements OnInit, OnDestroy {
         this.fbDatabase
           .list<Room>('room/')
           .query.ref.child(this.id)
-          .on('value', (data) => (this.room = data.val()));
+          .on('value', (data) => (this.room = {key: data.key, ...data.val()}));
       }
     });
   }
@@ -60,6 +65,14 @@ export class DemoPageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     console.log(this.data)
 
+  }
+
+  editRoom() {
+    this.modal.create({
+      nzTitle: 'Edit Room',
+      nzContent: CreateRoomModalComponent,
+      nzComponentParams: {roomData: this.room}
+    })
   }
 
   @HostListener('window:unload', ['$event'])

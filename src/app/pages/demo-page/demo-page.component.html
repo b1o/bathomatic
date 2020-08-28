@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="sidebar">
       <div class="name">
-        <strong>{{ room.tenantName }}</strong>
+        <strong>{{ room.tenantName }} </strong>
         <small><i nz-icon nzType="calendar"></i> {{ room.occupiedFor }}</small>
       </div>
 
@@ -17,64 +17,14 @@
           <nz-list-item>
             <strong>Service</strong>
           </nz-list-item>
+          <nz-list-item *ngIf="fbAuth.user | async">
+            <button (click)="editRoom()" nz-button nzType="danger">Edit Room</button>
+          </nz-list-item>
         </nz-list>
       </div>
     </div>
     <div class="content">
-      <div class="device">
-        <iframe
-          width="100%"
-          height="100%"
-          src="http://remote.uniqueautomation.co.uk/cgi-bin/bathomatic.cgi/65/3018efc8-8be6-4bd6-ba47-e098bd3e3f89"
-          frameborder="0"
-        ></iframe>
-        <!-- <div class="device-header">
-          <img src="/assets/bathomatic_white.png" alt="" />
-        </div>
-        <div class="device-main">
-          <div class="name">Bath oils</div>
-          <div class="visual-wrapper">
-            <span class="degrees">37C</span>
-            <img
-              style="width: 100%"
-              src="/assets/outline/device-bath.svg"
-              alt=""
-            />
-            <span class="fill-percent">10%</span>
-          </div>
-        </div>
-        <div class="device-footer">
-          <div class="status">Filling</div>
-          <div class="controls">
-            <span>38C</span>
-            <button
-              nzDanger
-              class="power-off"
-              nz-button
-              nzShape="circle"
-              nzGhost
-            >
-              <i nz-icon nzType="poweroff"></i>
-            </button>
-            <span>90%</span>
-          </div>
-        </div> -->
-      </div>
-      <div class="stream">
-        <iframe
-          width="100%"
-          height="100%"
-          src="https://www.youtube.com/embed/GdzrrWA8e7A?autoplay=1"
-          frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
-        <div class="stream-description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut est in
-          quidem quam distinctio odit ipsum eos, voluptatum corporis veniam
-          doloremque facilis. Porro, sequi eaque? Esse non dolores beatae quia.
-        </div>
-      </div>
+      <router-outlet></router-outlet>
     </div>
   </div>
 

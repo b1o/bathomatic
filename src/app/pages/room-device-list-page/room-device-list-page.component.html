@@ -1,0 +1,75 @@
+<div *ngIf="roomData; else loading" class="wrapper" nz-row>
+  <div nz-col nzSpan="8" class="col baths">
+    <div class="header">
+      <img src="/assets/bathomatic_white.png" style="width: 100%" alt="" />
+    </div>
+    <nz-divider></nz-divider>
+
+    <div class="list">
+      <ng-container
+        *ngTemplateOutlet="
+          deviceList;
+          context: { devices: roomData.bathDevices }
+        "
+      >
+      </ng-container>
+    </div>
+  </div>
+
+  <div nz-col nzSpan="8" class="col showers">
+    <div class="header">
+      <img src="/assets/ishower_white.png" style="width: 100%" alt="" />
+    </div>
+    <nz-divider></nz-divider>
+
+    <div class="list">
+      <ng-container
+        *ngTemplateOutlet="
+          deviceList;
+          context: { devices: roomData.showerDevices }
+        "
+      >
+      </ng-container>
+    </div>
+  </div>
+
+  <div nz-col nzSpan="8" class="col showers">
+    <div class="header">
+      <img src="/assets/steamomatic_white.png" style="width: 100%" alt="" />
+    </div>
+    <nz-divider></nz-divider>
+
+    <div class="list">
+      <ng-container
+        *ngTemplateOutlet="
+          deviceList;
+          context: { devices: roomData.steamDevices }
+        "
+      >
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <nz-spin></nz-spin>
+</ng-template>
+
+<ng-template #deviceList let-devices="devices">
+  <nz-list *ngIf="devices; else empty">
+    <nz-list-item (click)="itemClicked(device)" *ngFor="let device of devices">
+      <ul nz-list-item-actions>
+        <nz-list-item-action>
+          <a>
+            <i nz-icon nzType="arrow-right"></i>
+          </a>
+        </nz-list-item-action>
+      </ul>
+      {{ device.deviceName }}
+    </nz-list-item>
+  </nz-list>
+</ng-template>
+
+<ng-template #empty>
+  <div style="color: #1890ff; text-align: center;">No Devices</div>
+</ng-template>

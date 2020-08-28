@@ -116,7 +116,7 @@ export class CreateRoomModalComponent implements OnInit {
       this.fb.group({
         videoUrl: '',
         deviceName: '',
-        deviceID: '',
+        deviceId: '',
       })
     );
   }

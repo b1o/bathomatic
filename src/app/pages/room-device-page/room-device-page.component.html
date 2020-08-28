@@ -1,0 +1,27 @@
+<div class="wrapper">
+  <div class="device">
+    <iframe
+      *ngIf="deviceUrl"
+      width="100%"
+      height="100%"
+      [src]="deviceUrl"
+      frameborder="0"
+    ></iframe>
+  </div>
+  <div class="stream">
+    <iframe
+      *ngIf="videoUrl"
+      width="100%"
+      height="100%"
+      [src]="videoUrl"
+      frameborder="0"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+    <div class="stream-description">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut est in quidem
+      quam distinctio odit ipsum eos, voluptatum corporis veniam doloremque
+      facilis. Porro, sequi eaque? Esse non dolores beatae quia.
+    </div>
+  </div>
+</div>

@@ -30,6 +30,8 @@ import { environment } from 'src/environments/environment';
 import { CreateRoomModalComponent } from './components/create-room-modal/create-room-modal.component';
 import { ChartModule } from './chart/chart.module';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { RoomDeviceListPageComponent } from './pages/room-device-list-page/room-device-list-page.component';
+import { RoomDevicePageComponent } from './pages/room-device-page/room-device-page.component';
 registerLocaleData(en);
 
 @NgModule({
@@ -44,6 +46,8 @@ registerLocaleData(en);
     DemoPageComponent,
     RoomsPageComponent,
     CreateRoomModalComponent,
+    RoomDeviceListPageComponent,
+    RoomDevicePageComponent,
   ],
   imports: [
     BrowserModule,

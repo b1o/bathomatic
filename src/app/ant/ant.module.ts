@@ -26,8 +26,10 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzEmptyModule } from 'ng-zorro-antd/empty';
 const MODULES = [
   NzLayoutModule,
+  NzEmptyModule,
   NzTableModule,
   NzSpinModule,
   NzCheckboxModule,
