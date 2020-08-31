@@ -7,7 +7,7 @@
 >
   <div class="locked-overlay" *ngIf="room.isLocked">
     <i nz-icon nzType="lock"></i>
-    <strong>There is someone already in the room</strong>
+    <strong>There is already someone in this room </strong>
   </div>
 
   <div style="width: 100%; text-align: center">
@@ -16,18 +16,18 @@
 
   <nz-space style="margin-top: 48px; display: flex; justify-content: center">
     <nz-space-item *ngIf="room.bath">
-      <nz-badge nzCount="{{room.bathDevices?.length}}">
+      <nz-badge nzCount="{{ room.bathDevices?.length }}">
         <nz-avatar [nzSize]="64" [nzIcon]="'bath'"></nz-avatar>
       </nz-badge>
     </nz-space-item>
 
     <nz-space-item *ngIf="room.shower">
-      <nz-badge nzCount="{{room.showerDevices?.length}}">
+      <nz-badge nzCount="{{ room.showerDevices?.length }}">
         <nz-avatar [nzSize]="64" [nzIcon]="'shower'"></nz-avatar>
       </nz-badge>
     </nz-space-item>
     <nz-space-item *ngIf="room.steam">
-      <nz-badge nzCount="{{room.steamDevices?.length}}">
+      <nz-badge nzCount="{{ room.steamDevices?.length }}">
         <nz-avatar [nzSize]="64" [nzIcon]="'steam'"></nz-avatar>
       </nz-badge>
     </nz-space-item>

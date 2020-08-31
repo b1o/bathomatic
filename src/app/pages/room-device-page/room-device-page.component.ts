@@ -16,7 +16,7 @@ export class RoomDevicePageComponent implements OnInit {
     this.route.queryParamMap.subscribe((params) => {
       this.deviceId = params.get('deviceId');
       this.deviceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-        this.toDeviceUrl(this.deviceId)
+        this.deviceId
       );
       this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
         params.get('videoUrl')
