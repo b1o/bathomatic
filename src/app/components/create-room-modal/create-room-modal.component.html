@@ -109,6 +109,18 @@
       <nz-option nzValue="MAINTENANCE" nzLabel="Maintenance"></nz-option>
       <nz-option nzValue="no_status" nzLabel="No Status"></nz-option>
     </nz-select>
+
+    <button
+      (click)="toggleLock()"
+      nzShape="circle"
+      nz-button
+      nzType="{{ validateForm.get('isLocked').value ? 'danger' : 'primary' }}"
+    >
+      <i
+        nz-icon
+        nzType="{{ validateForm.get('isLocked').value ? 'lock' : 'unlock' }}"
+      ></i>
+    </button>
   </div>
 </form>
 
@@ -149,7 +161,8 @@
   <ng-template #formHeader>
     {{ label }}
     <button nzShape="circle" nzSize="small" (click)="addDevice(type)" nz-button>
-      <i nz-icon nzType="plus"></i></button>
+      <i nz-icon nzType="plus"></i>
+    </button>
   </ng-template>
   <div
     style="margin-bottom: 8px"

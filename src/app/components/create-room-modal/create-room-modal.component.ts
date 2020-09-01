@@ -106,6 +106,15 @@ export class CreateRoomModalComponent implements OnInit {
     });
   }
 
+  toggleLock() {
+    this.validateForm.patchValue({
+      isLocked: !this.validateForm.get('isLocked').value,
+    });
+    this.roomsRef.update(this.roomData.key, {
+      isLocked: this.validateForm.get('isLocked').value,
+    });
+  }
+
   getControlsForDevice(deviceType) {
     return (this.validateForm.get(deviceType) as FormArray).controls;
   }
