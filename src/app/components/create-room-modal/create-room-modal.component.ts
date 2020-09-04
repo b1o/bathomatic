@@ -66,6 +66,7 @@ export class CreateRoomModalComponent implements OnInit {
           );
         }
       }
+
       if (this.roomData?.showerDevices) {
         for (let device of this.roomData.showerDevices) {
           (this.validateForm.get('showerDevices') as FormArray).push(
@@ -136,22 +137,22 @@ export class CreateRoomModalComponent implements OnInit {
   }
 
   add() {
-    console.log(this.validateForm.value);
+    console.log(this.validateForm);
     // this.modalRef.close();
-    this.loading = true;
-    if (this.isEdit) {
-      this.roomsRef
-        .update(this.roomData.key, this.validateForm.value)
-        .then((_) => {
-          this.loading = false;
-          this.modalRef.close();
-        });
-    } else {
-      this.roomsRef.push(this.validateForm.value).then((res) => {
-        this.loading = false;
-        this.modalRef.close();
-      });
-    }
+    // this.loading = true;
+    // if (this.isEdit) {
+    //   this.roomsRef
+    //     .update(this.roomData.key, this.validateForm.value)
+    //     .then((_) => {
+    //       this.loading = false;
+    //       this.modalRef.close();
+    //     });
+    // } else {
+    //   this.roomsRef.push(this.validateForm.value).then((res) => {
+    //     this.loading = false;
+    //     this.modalRef.close();
+    //   });
+    // }
   }
 
   cancel() {

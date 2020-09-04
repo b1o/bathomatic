@@ -18,7 +18,9 @@
             <strong>Service</strong>
           </nz-list-item>
           <nz-list-item *ngIf="fbAuth.user | async">
-            <button (click)="editRoom()" nz-button nzType="danger">Edit Room</button>
+            <button (click)="editRoom()" nz-button nzType="danger">
+              Edit Room
+            </button>
           </nz-list-item>
         </nz-list>
       </div>
@@ -28,13 +30,17 @@
     </div>
   </div>
 
-  <nz-divider nzOrientation="left" [nzText]="expandIcon"></nz-divider>
-  <ng-template #expandIcon>
-    <a (click)="showData = !showData"
-      ><i nz-icon nzType="{{ showData ? 'menu-unfold' : 'menu-fold' }}"></i
-    ></a>
-    Data
-  </ng-template>
+  <!-- <nz-divider nzOrientation="left" [nzText]="expandIcon"></nz-divider>
+  <ng-template #expandIcon> -->
+  <div style="margin: 12px 0px">
+    <strong>
+      <a (click)="showData = !showData"
+        ><i nz-icon nzType="{{ showData ? 'menu-unfold' : 'menu-fold' }}"></i
+      ></a>
+      Data
+    </strong>
+  </div>
+  <!-- </ng-template> -->
   <div *ngIf="showData" class="data">
     <ngx-charts-line-chart
       [view]="[700, 350]"

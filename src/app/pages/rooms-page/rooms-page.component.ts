@@ -28,6 +28,7 @@ export class RoomsPageComponent implements OnInit {
     });
 
     this.roomsRef = this.fbDatabase.list('room');
+
     this.rooms = this.roomsRef.snapshotChanges().pipe(
       map((changes) =>
         changes.map((c) => ({ key: c.payload.key, ...c.payload.val() }))

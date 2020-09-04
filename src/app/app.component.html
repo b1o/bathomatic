@@ -10,7 +10,13 @@
       <img src="/assets/logo_white.png" alt="logo" />
     </div>
 
-    <ul [nzSelectable]="false" nz-menu nzTheme="dark" nzMode="inline">
+    <ul
+      style="margin-top: 64px; background: rgb(52 52 52)"
+      [nzSelectable]="false"
+      nz-menu
+      nzTheme="dark"
+      nzMode="inline"
+    >
       <bm-floor-filter></bm-floor-filter>
       <bm-rooms-filter></bm-rooms-filter>
       <bm-systems-filter></bm-systems-filter>
@@ -58,7 +64,7 @@
       </div>
     </nz-header>
     <nz-content>
-      <div style="margin-bottom: 128px;" class="inner-content">
+      <div class="inner-content">
         <router-outlet></router-outlet>
       </div>
     </nz-content>

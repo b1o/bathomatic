@@ -1,19 +1,19 @@
-<div class="rooms">
+<div class="rooms" >
   <button
     *ngIf="canEdit"
     nz-button
-    style="padding: 0; height: 100%; width: 100%;"
+    style="padding: 0; height: 100%; width: 100%"
     nzType="dashed"
     (click)="addRoom()"
     nzInfo
     class="add-room-card hoverable"
   >
-      <nz-avatar
-        style="background-color: #1890ff"
-        nzSpin
-        [nzSize]="128"
-        [nzIcon]="'plus'"
-      ></nz-avatar>
+    <nz-avatar
+      style="background-color: #1890ff"
+      nzSpin
+      [nzSize]="128"
+      [nzIcon]="'plus'"
+    ></nz-avatar>
   </button>
   <bm-room-card
     [canEdit]="canEdit"
