@@ -13,6 +13,7 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Room } from 'src/app/models/room';
 import { formatCurrency, FormatWidth } from '@angular/common';
 import { Device } from 'src/app/admin/models/device';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'bm-create-room-modal',
@@ -34,7 +35,8 @@ export class CreateRoomModalComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private modalRef: NzModalRef,
-    private fbDatabase: AngularFireDatabase
+    private fbDatabase: AngularFireDatabase,
+    private alerts: NzMessageService
   ) {
     this.roomsRef = this.fbDatabase.list('room');
   }
@@ -113,7 +115,7 @@ export class CreateRoomModalComponent implements OnInit {
     });
     this.roomsRef.update(this.roomData.key, {
       isLocked: this.validateForm.get('isLocked').value,
-    });
+    })
   }
 
   getControlsForDevice(deviceType) {
@@ -138,21 +140,21 @@ export class CreateRoomModalComponent implements OnInit {
 
   add() {
     console.log(this.validateForm);
-    // this.modalRef.close();
-    // this.loading = true;
-    // if (this.isEdit) {
-    //   this.roomsRef
-    //     .update(this.roomData.key, this.validateForm.value)
-    //     .then((_) => {
-    //       this.loading = false;
-    //       this.modalRef.close();
-    //     });
-    // } else {
-    //   this.roomsRef.push(this.validateForm.value).then((res) => {
-    //     this.loading = false;
-    //     this.modalRef.close();
-    //   });
-    // }
+    this.modalRef.close();
+    this.loading = true;
+    if (this.isEdit) {
+      this.roomsRef
+        .update(this.roomData.key, this.validateForm.value)
+        .then((_) => {
+          this.loading = false;
+          this.modalRef.close();
+        });
+    } else {
+      this.roomsRef.push(this.validateForm.value).then((res) => {
+        this.loading = false;
+        this.modalRef.close();
+      });
+    }
   }
 
   cancel() {

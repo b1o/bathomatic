@@ -7,7 +7,13 @@
     [nzTrigger]="null"
   >
     <div class="sidebar-logo">
-      <img src="/assets/logo_white.png" alt="logo" />
+      <img *ngIf="!isCollapsed" src="/assets/logo_white.png" alt="logo" />
+      <img
+        *ngIf="isCollapsed"
+        style="width: 35%"
+        src="/assets/B-logo.png"
+        alt="logo"
+      />
     </div>
 
     <ul
@@ -17,10 +23,101 @@
       nzTheme="dark"
       nzMode="inline"
     >
-      <bm-floor-filter></bm-floor-filter>
-      <bm-rooms-filter></bm-rooms-filter>
-      <bm-systems-filter></bm-systems-filter>
-      <bm-activity-filter></bm-activity-filter>
+      <div nz-submenu style="background: rgb(52 52 52)">
+        <span title><i *ngIf="isCollapsed" nz-icon>F</i><span>Floor</span></span>
+        <div class="buttons" style="background: black">
+          <button nz-button nzType="link">All</button>
+          <div
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: flex-start;
+              align-items: center;
+            "
+          >
+            <button nzGhost nz-button>Floor 1</button>
+            <button nzGhost nz-button>Floor 2</button>
+            <button nzGhost nz-button>Floor 3</button>
+            <button nzGhost nz-button>Floor 4</button>
+            <button nzGhost nz-button>Floor 5</button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        nz-submenu
+        style="background: rgb(52 52 52)"
+      >
+      <span title><i *ngIf="isCollapsed" nz-icon>R</i><span>Rooms</span></span>
+
+        <div style="padding: 24px; background: black" class="rooms-filter">
+          <div>
+            <nz-input-group
+              style="margin-bottom: 16px"
+              [nzSuffix]="suffixIconSearch"
+            >
+              <input type="text" nz-input placeholder="input search text" />
+            </nz-input-group>
+          </div>
+          <div class="room-buttons">
+            <button nzGhost nz-button>301</button>
+            <button nzGhost nz-button>302</button>
+            <button nzGhost nz-button>303</button>
+            <button nzGhost nz-button>304</button>
+            <button nzGhost nz-button>306</button>
+            <button nzGhost nz-button>307</button>
+            <button nzGhost nz-button>308</button>
+            <button nzGhost nz-button>309</button>
+            <button nzGhost nz-button>310</button>
+            <button nzGhost nz-button>311</button>
+          </div>
+        </div>
+      </div>
+      <ng-template #suffixIconSearch>
+        <i nz-icon nzType="search"></i>
+      </ng-template>
+
+      <div
+        nz-submenu
+        style="background: rgb(52 52 52)"
+      >
+      <span title><i *ngIf="isCollapsed" nz-icon>S</i><span>Systems</span></span>
+
+        <div style="padding: 24px; background: black" class="systems-filter">
+          <div>
+            <nz-list class="system-list" style="color: white" nzSize="large">
+              <nz-list-item
+                >Bathomatic<i nz-icon nzType="bath"></i>
+              </nz-list-item>
+
+              <nz-list-item
+                >Ishower<i nz-icon nzType="shower"></i>
+              </nz-list-item>
+              <nz-list-item
+                >Steamomatic<i nz-icon nzType="steam"></i>
+              </nz-list-item>
+            </nz-list>
+          </div>
+        </div>
+      </div>
+
+      <div
+        nz-submenu
+        style="background: rgb(52 52 52)"
+      >
+      <span title><i *ngIf="isCollapsed" nz-icon>A</i><span>Activity</span></span>
+
+        <div style="padding: 24px; background: black" class="activity-filter">
+          <div>
+            <nz-list class="activity-list" style="color: white" nzSize="large">
+              <nz-list-item>Do not disturb </nz-list-item>
+
+              <nz-list-item>Attention</nz-list-item>
+              <nz-list-item>Maintenance</nz-list-item>
+            </nz-list>
+          </div>
+        </div>
+      </div>
     </ul>
   </nz-sider>
   <nz-layout>
@@ -33,6 +130,7 @@
             [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
           ></i>
         </span>
+        <h1 style="margin-bottom: 0">Dashbaord 5*Hotel</h1>
 
         <nz-space [nzSize]="'large'">
           <nz-space-item>
