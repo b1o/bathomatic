@@ -21,8 +21,8 @@ export class AuthPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
-      email: [null, [Validators.required, Validators.email]],
-      password: [null, [Validators.required]],
+      email: ['admin@email.com', [Validators.required, Validators.email]],
+      password: ['123456', [Validators.required]],
       remember: [true],
     });
   }
@@ -55,7 +55,7 @@ export class AuthPageComponent implements OnInit {
       .signInWithEmailAndPassword(this.email, this.password)
       .then((data) => {
         this.message.success('Login Successs');
-        this.router.navigateByUrl('/admin');
+        this.router.navigateByUrl('/rooms');
       })
       .catch((err) => this.message.error('Invalid Credentials'));
   }
